@@ -1,0 +1,16 @@
+version: '3'
+services:
+  echo-server:
+    build: ./echo-server
+    image: echo-server
+    tty: true
+    hostname: echo-server
+    stdin_open: true # docker run -i
+    entrypoint: /bin/sh
+    volumes:
+      - ./docker/conf/echo-server:/opt/echo-server/conf
+      - ./docker/conf/agent-echo-server:/opt/spire/conf/agent
+      - /var/run/docker.sock:/var/run/docker.sock
+
+
+  
