@@ -1,0 +1,13 @@
+version: '3'
+services:
+  spire-agent:
+    image: spire-agent:latest-local
+    hostname: spire-agent
+    tty: true
+    volumes:
+      - agent-socket:/tmp/spire-agent/public
+      - ./docker/conf/agent:/opt/spire/conf/agent
+      - /var/run/docker.sock:/var/run/docker.sock
+volumes:
+  agent-socket:
+

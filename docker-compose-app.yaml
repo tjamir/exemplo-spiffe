@@ -1,0 +1,25 @@
+version: '3'
+services:
+  database-sidecar:
+    build: ./sidecar
+    image: sidecar
+    tty: true
+    hostname: sidecar
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./docker/conf/sidecar:/opt/sidecar/conf
+      - ./docker/conf/agent:/opt/spire/conf/agent
+      - agent-socket:/tmp/spire-agent/public
+
+
+  database:
+    image: mysql:5.7
+    tty: true
+    hostname: database
+    links:
+      - database-sidecar
+    
+volumes:
+  agent-socket:
+
