@@ -1,5 +1,0 @@
-{
-    "port": 8888,
-    "authorized_id": "spiffe://example.org/client/echo-client",
-    "socket_path": "unix:///tmp/spire-agent/public/api.sock"
-}

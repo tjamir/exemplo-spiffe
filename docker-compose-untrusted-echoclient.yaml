@@ -1,0 +1,14 @@
+version: '3'
+services:
+  untrusted-client:
+    build: ./echo-client
+    tty: true
+    hostname: trusted-echo-client
+    stdin_open: true # docker run -i
+    entrypoint: /bin/sh
+    volumes:
+      - ./docker/conf/echo-client:/opt/echo-client/conf
+      - ./docker/conf/agent:/opt/spire/conf/agent
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  

@@ -1,0 +1,8 @@
+{
+    "server_port": 8888,
+    "server_address": "echo-server",
+    "authorized_id": "spiffe://example.org/server/echo-server",
+    "socket_path": "unix:///tmp/spire-agent/public/api.sock"
+}
+
+}

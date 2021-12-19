@@ -1,0 +1,11 @@
+version: '3'
+services:
+  spire-server:
+    image: spire-server:latest-local
+    hostname: spire-server
+    tty: true
+    ports:
+      - "8081:8081"
+    volumes:
+      - ./docker/conf/server:/opt/spire/conf/server
+  

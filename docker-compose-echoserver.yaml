@@ -9,8 +9,7 @@ services:
     entrypoint: /bin/sh
     volumes:
       - ./docker/conf/echo-server:/opt/echo-server/conf
-      - ./docker/conf/agent-echo-server:/opt/spire/conf/agent
+      - ./docker/conf/agent:/opt/spire/conf/agent
       - /var/run/docker.sock:/var/run/docker.sock
-
 
   

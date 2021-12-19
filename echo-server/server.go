@@ -5,6 +5,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"log"
 	"net"
 	"os"
 	"time"
@@ -61,7 +62,7 @@ func RunServer(ctx context.Context, config ServerConfig) error {
 		return err
 	}
 
-	fmt.Println("Iniciando tls server")
+	log.Default().Println("Iniciando tls server")
 	listen, err := spiffetls.ListenWithMode(ctx,
 		"tcp", fmt.Sprintf(":%d", config.Port),
 		spiffetls.MTLSServerWithSourceOptions(tlsconfig.AuthorizeID(allowedId),
@@ -72,15 +73,13 @@ func RunServer(ctx context.Context, config ServerConfig) error {
 	}
 
 	for {
-		fmt.Println("Entrou no loop")
+		log.Default().Println("Aguardando conexão")
 		connection, err := listen.Accept()
-		fmt.Println("Aceitou")
 		go func() {
 			defer connection.Close()
 			if err != nil {
 				return
 			}
-			fmt.Println("Rodando a conexão")
 			if err := handleConnection(connection); err != nil {
 				return
 			}
@@ -92,6 +91,7 @@ func RunServer(ctx context.Context, config ServerConfig) error {
 func handleConnection(connection net.Conn) error {
 	buffReader := bufio.NewReader(connection)
 	request, err := buffReader.ReadString('\n')
+	log.Default().Println("Mensagem recebida: ", request)
 	buffWriter := bufio.NewWriter(connection)
 	if err != nil {
 		return err
