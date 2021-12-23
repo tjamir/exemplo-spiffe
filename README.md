@@ -1,6 +1,5 @@
 # exemplo-spiffe
 
-
 ## Comandos
 
 ### 1- Iniciar o Spire Server
@@ -10,8 +9,6 @@
 docker-compose -f docker-compose-spireserver.yaml  up
 
 ```
-
-
 
 ### 2- Iniciar o Container do echo-server
 
@@ -70,7 +67,7 @@ cd /opt/spire
  ./bin/spire-agent run -joinToken [Primeiro token gerado no passo 7] &
  ```
 
- ### 10 Criar um SVID para o trusted-echo-client
+### 10 Criar um SVID para o trusted-echo-client
 
  ```bash
 docker exec exemplo-spiffe_spire-server_1 /opt/spire/bin/spire-server entry create \

@@ -4,5 +4,3 @@
     "authorized_id": "spiffe://example.org/server/echo-server",
     "socket_path": "unix:///tmp/spire-agent/public/api.sock"
 }
-
-}

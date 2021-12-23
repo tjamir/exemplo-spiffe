@@ -6,7 +6,7 @@ RUN cd /opt/$APP_NAME && go mod tidy && go mod download
 WORKDIR /opt/$APP_NAME
 RUN go build -o /opt/$APP_NAME/bin/$APP_NAME .
 
-FROM spire-agent:latest-local as agent
+FROM tjamir/spire-agent:demo as agent
 
 FROM alpine as echo-server
 ARG APP_NAME=echo-server
