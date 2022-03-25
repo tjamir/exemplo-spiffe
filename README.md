@@ -26,7 +26,7 @@ docker exec exemplo-spiffe_spire-server_1 /opt/spire/bin/spire-server token gene
 
 ```bash
 cd /opt/spire
- ./bin/spire-agent run -joinToken [Token gerado no passo 4] &
+ ./bin/spire-agent run -joinToken [Token gerado no passo 3] &
  ```
 
 ### 5- Criar um SVID para o echo-server
